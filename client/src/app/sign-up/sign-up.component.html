@@ -1,0 +1,89 @@
+<div class="card" style="width: 800px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text"
+                     id="username"
+                     class="form-control"
+                     formControlName="username">
+              <span 
+                *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched"
+                class="help-block">Please enter valid username</span>
+            </div>
+  
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text"
+                     id="email"
+                     class="form-control"
+                     formControlName="email">
+              <span 
+                *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched"
+                class="help-block">Please enter valid email</span>
+            </div>
+  
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password"
+                     id="password"
+                     class="form-control"
+                     formControlName="password"
+                     [minlength] = '6'>
+              <span 
+                *ngIf="!signupForm.get('password').valid && signupForm.get('password').touched"
+                class="help-block">
+              <span *ngIf="signupForm.controls['password'].errors.required">
+                enter the password
+              </span>
+              <span *ngIf="signupForm.controls['password'].errors.minlength">
+                  password contain at least 6 charectors
+                </span>
+              </span>
+            </div>
+  
+            <div class="form-action">        
+              <button class="btn btn-primary" type="submit">Signup</button>
+            </div>
+  
+            <hr>
+            <div class=" form-action">
+              <p>Already you have an account ?</p> <a class="btn btn-link" [routerLink] = "['/login']">Login</a>
+            </div>
+            
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- <form [formGroup]="angForm" (ngSubmit)="onSubmit()"novalidate >
+      <div class="form-group">
+          <label>Name:</label>
+          <input class="form-control" formControlName="name" type="text">
+      </div>
+      <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+      </div>
+       <div class="form-group">
+          <label>Address:</label>
+          <input class="form-control" formControlName="address" type="text">
+      </div>
+      <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+          <div *ngIf="angForm.controls['address'].errors.required">
+            email is required.
+          </div>
+      </div>
+      <button type="submit"
+          [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+          Save
+      </button>
+</form>
+<br />
+<p>Form value: {{ angForm.value | json }}</p>
+<p>Form status: {{ angForm.status | json }}</p>
+ -->

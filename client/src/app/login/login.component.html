@@ -1,3 +1,50 @@
-<p>
-  login works!
-</p>
+<div class="card" style="width: 700px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text"
+                     id="email"
+                     class="form-control"
+                     formControlName="email">
+              <span 
+                *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched"
+                class="help-block">Please enter valid email</span>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password"
+                     id="password"
+                     class="form-control"
+                     formControlName="password"
+                     >
+                     <span 
+                     *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched"
+                     class="help-block">
+                   <span *ngIf="loginForm.controls['password'].errors.required">
+                     enter the password
+                   </span>
+                   <span *ngIf="loginForm.controls['password'].errors.minlength">
+                       password contain at least 6 charectors
+                     </span>
+                   </span>
+            </div>
+
+            <div class="form-action">        
+              <button class="btn btn-primary" type="submit">Login</button>
+            </div>
+
+            <hr>
+            <div class=" form-action">
+              <p>Create a new account here</p><a class="btn btn-link" [routerLink] = "['/signup']">Signup</a>
+            </div>
+            
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
