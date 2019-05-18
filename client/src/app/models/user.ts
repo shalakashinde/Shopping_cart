@@ -4,4 +4,9 @@ export class User {
     password: string;
     email: string;
     mob_no: number;
+    constructor(obj: any = null) {
+        if (obj != null) {
+            Object.assign(this, obj);
+        }
+    }
 }
